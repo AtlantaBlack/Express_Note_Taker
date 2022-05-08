@@ -77,8 +77,8 @@ body {
 .list-container i {
   font-size: 1.1rem;
   cursor: pointer;
-  padding-left: 8px; /* added padding */
-  padding-right: 8px; /* added padding */
+  padding-left: 10px; /* added padding */
+  padding-right: 10px; /* added padding */
   border: 2px solid #fff; /* add border so hover effect doesn't shift elements */ 
   border-radius: 1.5rem; /* make circle around icon */
 }
