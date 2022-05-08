@@ -2,8 +2,6 @@
 const express = require('express');
 const path = require('path');
 
-const db = require('./db/db.json');
-
 // import for notes
 const { v4: uuid } = require('uuid');
 const {
@@ -49,34 +47,25 @@ app.get('/api/notes', (req, res) => {
 
 // post a note
 app.post('/api/notes', (req, res) => {
-
     console.log(`${req.method} request received for new note`);
     console.log(req.body);
 
-    const newNote = {
-        id: uuid(),
-        title: req.body.title,
-        text: req.body.text
-    };
+    const { title, text } = req.body;
 
-    console.log(newNote);
+    if (req.body) {
+        const newNote = {
+            id: uuid(),
+            title,
+            text
+        }
 
-    const { id, title, text } = newNote;
-
-    if (id && title && text) {
-
-
-        // const writeToFile = (destination, content) =>
-        // fs.writeFile(destination, JSON.stringify(content, null, 4), (err) =>
-        //     err ? console.error(err) : console.info(`\nData written to ${destination}`)
-        // );
-
+        console.log(newNote);
 
         readAndAppend(newNote, './db/db.json');
-        res.json(`Note added!`);
+        res.status(201).json(`New note added!`);
+    } else {
+        res.status(400).json({ message: "Something went wrong" });
     }
-
-    
 
 })
 
