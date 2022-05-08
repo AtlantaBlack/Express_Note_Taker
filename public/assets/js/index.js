@@ -1,8 +1,8 @@
-// ADDED DELETE BUTTON
+// Extra functionalities added:
+// -- note taker instructions (first list item) is viewable and cannot be deleted
 
 let noteTitle;
 let noteText;
-let deleteNoteBtn; // delete button
 let saveNoteBtn;
 let newNoteBtn;
 let noteList;
@@ -10,8 +10,6 @@ let noteList;
 if (window.location.pathname === '/notes') {
   noteTitle = document.querySelector('.note-title');
   noteText = document.querySelector('.note-textarea');
-  // delete button
-  deleteNoteBtn = document.querySelector('.delete-note');
   saveNoteBtn = document.querySelector('.save-note');
   newNoteBtn = document.querySelector('.new-note');
   noteList = document.querySelectorAll('.list-container .list-group');
@@ -107,7 +105,7 @@ const handleNoteView = (e) => {
   renderActiveNote();
 };
 
-// Sets the activeNote to and empty object and allows the user to enter a new note
+// Sets the activeNote to an empty object and allows the user to enter a new note
 const handleNewNoteView = (e) => {
   activeNote = {};
   renderActiveNote();
@@ -164,7 +162,18 @@ const renderNoteList = async (notes) => {
   }
 
   jsonNotes.forEach((note) => {
-    const li = createLi(note.title);
+    //   console.log(`note: ${JSON.stringify(note)}`);
+    //   console.log(jsonNotes.indexOf(note));
+    let li = createLi(note.title);
+
+    // if the first list item includes the word "instructions", then don't add a delete button to it
+    if (jsonNotes.indexOf(note) === 0 && note.title.includes("Note Taker Instructions")) {
+        li = createLi(note.title, false);
+    }
+    // if (note.title.includes("Note Taker Instructions")) {
+    //     li = createLi(note.title, false)
+    // }
+
     li.dataset.note = JSON.stringify(note);
 
     noteListItems.push(li);
@@ -180,7 +189,7 @@ const getAndRenderNotes = () => getNotes().then(renderNoteList);
 
 if (window.location.pathname === '/notes') {
     // delete button event listener
-  deleteNoteBtn.addEventListener('click', handleNoteDelete);
+//   deleteNoteBtn.addEventListener('click', handleNoteDelete);
   saveNoteBtn.addEventListener('click', handleNoteSave);
   newNoteBtn.addEventListener('click', handleNewNoteView);
   noteTitle.addEventListener('keyup', handleRenderSaveBtn);

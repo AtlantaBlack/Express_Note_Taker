@@ -2,8 +2,6 @@
 const express = require('express');
 const path = require('path');
 
-// const db = require('./db/db.json');
-
 // import for notes
 const { v4: uuid } = require('uuid');
 const {
@@ -11,9 +9,6 @@ const {
     readAndAppend,
     writeToFile
 } = require('./helpers/fsUtils');
-const { fstat, read } = require('fs');
-const e = require('express');
-const nodemon = require('nodemon');
 
 // ----------------------------------
 
@@ -79,9 +74,9 @@ app.delete('/api/notes/:id', (req, res) => {
     readFromFile('./db/db.json')
         .then(data => JSON.parse(data))
         .then(json => {
-                const updatedNotes = json.filter(note => note.id !== noteId);
-                writeToFile('./db/db.json', updatedNotes);
-                res.json(`Note ID ${noteId} successfully deleted`);
+            const updatedNotes = json.filter(note => note.id !== noteId);
+            writeToFile('./db/db.json', updatedNotes);
+            res.json(`Note ID ${noteId} successfully deleted`);
         })
 })
 
