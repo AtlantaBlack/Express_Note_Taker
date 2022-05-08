@@ -2,6 +2,8 @@
 const express = require('express');
 const path = require('path');
 
+// const db = require('./db/db.json');
+
 // import for notes
 const { v4: uuid } = require('uuid');
 const {
@@ -9,7 +11,9 @@ const {
     readAndAppend,
     writeToFile
 } = require('./helpers/fsUtils');
-const { fstat } = require('fs');
+const { fstat, read } = require('fs');
+const e = require('express');
+const nodemon = require('nodemon');
 
 // ----------------------------------
 
@@ -52,9 +56,9 @@ app.post('/api/notes', (req, res) => {
 
     const { title, text } = req.body;
 
-    if (req.body) {
+    if (title && text) {
         const newNote = {
-            id: uuid(),
+            "id": uuid(),
             title,
             text
         }
@@ -64,11 +68,22 @@ app.post('/api/notes', (req, res) => {
         readAndAppend(newNote, './db/db.json');
         res.status(201).json(`New note added!`);
     } else {
-        res.status(400).json({ message: "Something went wrong" });
+        res.status(400).json(`Make sure the note includes both a title and body of text.`);
     }
-
 })
 
+// delete a note
+app.delete('/api/notes/:id', (req, res) => {
+    const noteId = req.params.id;
+
+    readFromFile('./db/db.json')
+        .then(data => JSON.parse(data))
+        .then(json => {
+                const updatedNotes = json.filter(note => note.id !== noteId);
+                writeToFile('./db/db.json', updatedNotes);
+                res.json(`Note ID ${noteId} successfully deleted`);
+        })
+})
 
 // activate the server
 app.listen(PORT, () => console.log(`App listening on port ${PORT}!`));
