@@ -1,5 +1,5 @@
 // Extra functionalities added:
-// -- note taker instructions (first list item) is viewable and cannot be deleted
+// -- note taker instructions is viewable and cannot be deleted (see line 167)
 
 let noteTitle;
 let noteText;
@@ -162,17 +162,12 @@ const renderNoteList = async (notes) => {
   }
 
   jsonNotes.forEach((note) => {
-    //   console.log(`note: ${JSON.stringify(note)}`);
-    //   console.log(jsonNotes.indexOf(note));
     let li = createLi(note.title);
 
-    // if the first list item includes the word "instructions", then don't add a delete button to it
+    // if the jsonNotes item at index 0 also includes the word "instructions", then don't add a delete button to it
     if (jsonNotes.indexOf(note) === 0 && note.title.includes("Note Taker Instructions")) {
         li = createLi(note.title, false);
     }
-    // if (note.title.includes("Note Taker Instructions")) {
-    //     li = createLi(note.title, false)
-    // }
 
     li.dataset.note = JSON.stringify(note);
 
@@ -188,8 +183,6 @@ const renderNoteList = async (notes) => {
 const getAndRenderNotes = () => getNotes().then(renderNoteList);
 
 if (window.location.pathname === '/notes') {
-    // delete button event listener
-//   deleteNoteBtn.addEventListener('click', handleNoteDelete);
   saveNoteBtn.addEventListener('click', handleNoteSave);
   newNoteBtn.addEventListener('click', handleNewNoteView);
   noteTitle.addEventListener('keyup', handleRenderSaveBtn);

@@ -35,7 +35,7 @@ app.get('/notes', (req, res) =>
     res.sendFile(path.join(__dirname, '/public/notes.html'))
 );
 
-// wildcard route - redirect wrong urls to 404.html error page
+// wildcard route that redirect wrong urls to 404.html error page
 app.get('*', (req, res) => 
     res.sendFile(path.join(__dirname, '/public/404.html'))
 );
