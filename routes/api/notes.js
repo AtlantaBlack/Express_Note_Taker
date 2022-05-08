@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const moment = require("moment");
 
 // import for notes
 const { v4: uuid } = require('uuid');
@@ -10,7 +11,7 @@ const { readFromFile, readAndAppend, writeToFile } = require('../../helpers/fsUt
 // get all notes
 router.get('', (req, res) => {
     // log the get request in the console
-    console.info(`Received ${req.method} request to display all the notes.`);
+    console.info(`\n••• ${moment().format('Do MMMM YYYY, h:mm:ss a')}\nReceived ${req.method} request to display notes.`);
     // read the notes using the helpful function
     readFromFile('./db/db.json').then(data => res.json(JSON.parse(data)));
 });
@@ -18,7 +19,7 @@ router.get('', (req, res) => {
 // post a note
 router.post('', (req, res) => {
     // log the post request in the console
-    console.log(`Received ${req.method} request for adding a new note.`);
+    console.log(`\n••• ${moment().format('Do MMMM YYYY, h:mm:ss a')}\nReceived ${req.method} request for adding a new note.`);
 
     const { title, text } = req.body; // destructure the request body
 
@@ -41,6 +42,9 @@ router.post('', (req, res) => {
 
 // delete a note
 router.delete('/:id', (req, res) => {
+    // log the delete request in the console
+    console.log(`\n••• ${moment().format('Do MMMM YYYY, h:mm:ss a')}\nReceived ${req.method} request to delete a note.`);
+    
     const noteId = req.params.id; // grab the id out of the request body
 
     // read the database

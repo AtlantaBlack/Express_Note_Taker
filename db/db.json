@@ -5,13 +5,13 @@
         "text": "\nWelcome to the Express.js Note Taker app!\n\nTo get started, press the plus (+) sign at the top right corner to add a new note. Give the note a title and add some text underneath to fill out the card.\n\nTo save the note, click the floppy disk icon in the top right hand corner (it will appear after you have entered a title and some text in the body). Your new note will be saved on the left-hand side of the page.\n\nTo delete a note, click the red rubbish bin icon next to the title of the note.\n\nHave fun!"
     },
     {
-        "id": "692fbcda-1ae9-4f93-9e51-0cdbe9851647",
-        "title": "eat potato chips",
-        "text": "but not too many"
+        "id": "9d45822d-dd7a-4569-a697-8cbd36a65423",
+        "title": "watch movie",
+        "text": "all the way through"
     },
     {
-        "id": "fc7aec4b-68bd-488f-8a93-7aa0804c4d4a",
-        "title": "Wedding week",
-        "text": "Tuesday:\n-- head down to Thredbo"
+        "id": "89166a82-37d7-40a8-8eb4-77e37f875fc3",
+        "title": "eat potato chips",
+        "text": "but not too many!"
     }
 ]
