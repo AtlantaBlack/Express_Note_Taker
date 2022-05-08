@@ -1,5 +1,8 @@
+// ADDED DELETE BUTTON
+
 let noteTitle;
 let noteText;
+let deleteNoteBtn; // delete button
 let saveNoteBtn;
 let newNoteBtn;
 let noteList;
@@ -7,6 +10,8 @@ let noteList;
 if (window.location.pathname === '/notes') {
   noteTitle = document.querySelector('.note-title');
   noteText = document.querySelector('.note-textarea');
+  // delete button
+  deleteNoteBtn = document.querySelector('.delete-note');
   saveNoteBtn = document.querySelector('.save-note');
   newNoteBtn = document.querySelector('.new-note');
   noteList = document.querySelectorAll('.list-container .list-group');
@@ -174,6 +179,8 @@ const renderNoteList = async (notes) => {
 const getAndRenderNotes = () => getNotes().then(renderNoteList);
 
 if (window.location.pathname === '/notes') {
+    // delete button event listener
+  deleteNoteBtn.addEventListener('click', handleNoteDelete);
   saveNoteBtn.addEventListener('click', handleNoteSave);
   newNoteBtn.addEventListener('click', handleNewNoteView);
   noteTitle.addEventListener('keyup', handleRenderSaveBtn);
