@@ -1,3 +1,5 @@
+/* added hover effects for icons */
+
 html,
 body {
   height: 100%;
@@ -10,10 +12,17 @@ body {
 }
 
 .icons i {
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 7px; /* adjusted margin size to remain at 15px incl. padding */
+  margin-right: 7px; /* adjusted margin size to remain at 15px incl. padding */
   font-size: 1.5rem;
   cursor: pointer;
+  padding: 8px; /* added padding around the icon */
+  border-radius: 1.5rem; /* make circle around icon */
+}
+
+/* added outline on hover for add/save note buttons */
+.icons i:hover {
+    outline: 2px solid #e4f3d6;
 }
 
 .note-textarea,
@@ -68,6 +77,16 @@ body {
 .list-container i {
   font-size: 1.1rem;
   cursor: pointer;
+  padding-left: 8px; /* added padding */
+  padding-right: 8px; /* added padding */
+  border: 2px solid #fff; /* add border so hover effect doesn't shift elements */ 
+  border-radius: 1.5rem; /* make circle around icon */
+}
+
+/* added outline on hover for delete note buttons */
+.list-container i:hover {
+    border-left: 2px solid #e25454;
+    border-right: 2px solid #e25454;
 }
 
 .list-container .list-group-item {

@@ -2,7 +2,7 @@
     {
         "id": "note-taker-instructions",
         "title": "Note Taker Instructions",
-        "text": "\nWelcome to the Express.js Note Taker app!\n\nTo get started, press the plus (+) sign at the top right corner to add a new note. Give the note a Title, and add some text below to fill out the card.\n\nTo save the note, click the floppy disk icon in the top right hand corner (it will appear after you have entered a title and some text in the body). Your new note will appear on the left!\n\nTo delete a note, click the red rubbish bin icon next to the title of the note.\n\nHave fun!"
+        "text": "\nWelcome to the Express.js Note Taker app!\n\nTo get started, press the plus (+) sign at the top right corner to add a new note. Give the note a Title, and add some text below to fill out the card.\n\nTo save the note, click the floppy disk icon in the top right hand corner (it will appear after you have entered a title and some text in the body). Your new note will be saved on the left!\n\nTo delete a note, click the red rubbish bin icon next to the title of the note.\n\nHave fun!"
     },
     {
         "id": "2d3d85d9-0162-4dcf-b686-a6d9d253644e",
