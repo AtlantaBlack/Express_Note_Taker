@@ -3,7 +3,7 @@
 
 ## Description
 
-The Express Note Taker application is a convenient tool to use, whether you are a busy business owner, a receptionist at the medical centre, or a disorganised programming student. Write down notes and save them. Delete at 
+The Express Note Taker application is a convenient tool to use, whether you are a busy business owner, a receptionist at the medical centre, or a disorganised programming student. Write down notes and save them, delete them after as needed.
 
 ## Table of Contents
 
